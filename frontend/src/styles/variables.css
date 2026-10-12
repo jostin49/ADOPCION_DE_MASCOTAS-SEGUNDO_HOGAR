@@ -1,0 +1,82 @@
+/* =====================================================================
+   variables.css — Unica fuente de decisiones visuales (seccion 13.2)
+   Cambiar la apariencia del aplicativo = modificar solo este archivo.
+   ===================================================================== */
+:root {
+  /* Colores */
+  --color-primario: #1F4E4A;
+  --color-primario-hover: #173B38;
+  --color-primario-suave: #E3EDEB;
+  --color-acento: #A9532E;
+  --color-acento-hover: #8E4324;
+  --color-fondo: #F6F3EE;
+  --color-superficie: #FFFFFF;
+  --color-borde: #E1DBD0;
+  --color-texto: #1E2926;
+  --color-texto-suave: #5E6A66;
+  --color-texto-sobre-color: #FFFFFF;
+  --color-exito: #2F7D4F;
+  --color-error: #B3392F;
+  --color-advertencia: #B7791F;
+  --color-info: #2C6A8A;
+
+  /* Fondos de mensajes: color de estado al 10 % de opacidad */
+  --color-exito-fondo: color-mix(in srgb, var(--color-exito) 10%, transparent);
+  --color-error-fondo: color-mix(in srgb, var(--color-error) 10%, transparent);
+  --color-info-fondo: color-mix(in srgb, var(--color-info) 10%, transparent);
+  /* Texto claro atenuado sobre el navbar */
+  --color-texto-sobre-color-suave: color-mix(in srgb, var(--color-texto-sobre-color) 80%, transparent);
+  --color-borde-sobre-color: color-mix(in srgb, var(--color-texto-sobre-color) 15%, transparent);
+
+  /* Tipografía */
+  --fuente-titulos: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --fuente-texto: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --texto-xs: 0.8125rem;
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-md: 1.125rem;
+  --texto-lg: 1.25rem;
+  --texto-xl: 1.5rem;
+  --texto-2xl: clamp(2rem, 1.5rem + 2vw, 2.25rem);
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-semibold: 600;
+  --peso-negrita: 700;
+  --interlineado-texto: 1.5;
+  --interlineado-titulo: 1.25;
+  --ancho-lectura: 60ch;
+
+  /* Espaciados */
+  --espacio-xs: 0.25rem;
+  --espacio-sm: 0.5rem;
+  --espacio-md: 1rem;
+  --espacio-lg: 1.5rem;
+  --espacio-xl: 2rem;
+  --espacio-2xl: 3rem;
+
+  /* Bordes y border radius */
+  --borde-ancho: 1px;
+  --borde-grueso: 2px;
+  --borde-estandar: var(--borde-ancho) solid var(--color-borde);
+  --radio-sm: 0.375rem;
+  --radio-md: 0.5rem;
+  --radio-pildora: 62.5rem;
+
+  /* Sombras */
+  --sombra-tarjeta: 0 1px 2px rgb(30 41 38 / 0.06);
+  --sombra-foco: 0 0 0 0.125rem var(--color-info);
+
+  /* Tamaños relevantes */
+  --ancho-contenedor: 67.5rem;
+  --ancho-formulario: 40rem;
+  --alto-control: 2.75rem;
+  --tamano-icono: 1.25rem;
+  --tamano-icono-lg: 1.5rem;
+  --tamano-circulo-icono: 2.75rem;
+  --tamano-circulo-icono-lg: 3.5rem;
+  --tamano-icono-xl: 2.5rem;
+
+  /* Transiciones */
+  --transicion-rapida: 150ms ease;
+  --duracion-giro: 900ms;
+}
