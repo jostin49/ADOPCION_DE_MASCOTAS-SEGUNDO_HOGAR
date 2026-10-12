@@ -1,0 +1,22 @@
+[
+  {
+    "id": "a331bfef-a211-4da9-b3d7-50f6b96d7cae",
+    "nombre": "María López",
+    "email": "maria@correo.com",
+    "mascota": "Max",
+    "especie": "Perro",
+    "descripcion": "Tengo casa con patio y experiencia con perros medianos.",
+    "fecha": "2026-11-05",
+    "creadoEn": "2026-10-13T03:15:37.958Z"
+  },
+  {
+    "id": "d6df1769-e880-4425-bfbe-52727c8efb3f",
+    "nombre": "Carlos Perez",
+    "email": "carlos@correo.com",
+    "mascota": "Luna",
+    "especie": "Gato",
+    "descripcion": "Vivo en un departamento amplio y tengo experiencia con gatos.",
+    "fecha": "2026-10-20",
+    "creadoEn": "2026-10-13T03:31:36.641Z"
+  }
+]
