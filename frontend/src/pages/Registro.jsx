@@ -1,5 +1,5 @@
 // Pagina de registro (/registro): envia la solicitud a la API y muestra el resultado.
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import FormularioAdopcion from '../components/FormularioAdopcion.jsx';
@@ -14,20 +14,32 @@ const MENSAJE_ERROR_RED =
 export default function Registro() {
   useTituloDocumento('Registrar solicitud');
 
+  const [enviando, setEnviando] = useState(false);
   // estado: null | { tipo: 'exito' } | { tipo: 'error', texto, detalles }
   const [resultado, setResultado] = useState(null);
+  const mensajeRef = useRef(null);
 
+  const mostrarMensaje = () =>
+    requestAnimationFrame(() => mensajeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+
+  // Devuelve true si se guardo, para que el formulario se limpie.
   async function enviarSolicitud(datos) {
+    setEnviando(true);
     setResultado(null);
     try {
       await crearRegistro(datos);
       setResultado({ tipo: 'exito' });
+      return true;
     } catch (error) {
       setResultado({
         tipo: 'error',
         texto: error.tipo === 'red' ? MENSAJE_ERROR_RED : MENSAJE_ERROR_SERVIDOR,
         detalles: error.detalles || [],
       });
+      return false;
+    } finally {
+      setEnviando(false);
+      mostrarMensaje();
     }
   }
 
@@ -38,7 +50,7 @@ export default function Registro() {
         <p className="encabezado__texto">Todos los campos son obligatorios.</p>
       </header>
 
-      <div>
+      <div ref={mensajeRef}>
         {resultado?.tipo === 'exito' && (
           <div className="registro__mensaje">
             <Mensaje tipo="exito" texto="Solicitud registrada correctamente." id="mensaje-exito">
@@ -59,7 +71,7 @@ export default function Registro() {
       </div>
 
       <div className="tarjeta tarjeta--formulario">
-        <FormularioAdopcion onEnviar={enviarSolicitud} />
+        <FormularioAdopcion onEnviar={enviarSolicitud} enviando={enviando} />
       </div>
     </section>
   );

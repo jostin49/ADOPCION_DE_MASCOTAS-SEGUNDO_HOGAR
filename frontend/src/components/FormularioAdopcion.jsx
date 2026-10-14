@@ -1,5 +1,9 @@
 // Formulario controlado de solicitud de adopcion.
-// Cada campo vive en el estado "valores" y se actualiza con useState.
+// - Cada campo vive en el estado "valores".
+// - Se valida al salir de cada campo (onBlur) y al enviar.
+// - Si hay errores no se llama a onEnviar y el foco va al primer campo con error.
+// - Mientras se envia, el formulario se bloquea y el boton muestra el progreso.
+// - Si el envio sale bien, el formulario se limpia.
 import { useRef, useState } from 'react';
 import {
   User,
@@ -11,6 +15,7 @@ import {
   CircleAlert,
   Send,
   Eraser,
+  LoaderCircle,
 } from 'lucide-react';
 import {
   ESPECIES,
@@ -56,7 +61,7 @@ function Campo({ id, etiqueta, Icono, error, children, contador }) {
   );
 }
 
-export default function FormularioAdopcion({ onEnviar }) {
+export default function FormularioAdopcion({ onEnviar, enviando }) {
   const [valores, setValores] = useState(VALORES_INICIALES);
   const [errores, setErrores] = useState({});
   const formRef = useRef(null);
@@ -83,6 +88,7 @@ export default function FormularioAdopcion({ onEnviar }) {
 
   async function manejarEnvio(evento) {
     evento.preventDefault();
+    if (enviando) return;
     const nuevosErrores = validarFormulario(valores);
     setErrores(nuevosErrores);
 
@@ -92,10 +98,12 @@ export default function FormularioAdopcion({ onEnviar }) {
       return;
     }
 
+    // Se envian los textos recortados (sin espacios al inicio/fin).
     const datos = Object.fromEntries(
       Object.entries(valores).map(([clave, valor]) => [clave, valor.trim()])
     );
-    await onEnviar(datos);
+    const exito = await onEnviar(datos);
+    if (exito) limpiar();
   }
 
   // Atributos de accesibilidad comunes para cada control.
@@ -112,7 +120,7 @@ export default function FormularioAdopcion({ onEnviar }) {
 
   return (
     <form className="formulario" onSubmit={manejarEnvio} noValidate ref={formRef} id="formulario-adopcion">
-      <fieldset className="formulario">
+      <fieldset className="formulario" disabled={enviando}>
         <legend className="solo-lectores">Datos de la solicitud de adopción</legend>
 
         <div className="formulario__fila">
@@ -168,8 +176,17 @@ export default function FormularioAdopcion({ onEnviar }) {
 
         <div className="formulario__acciones">
           <button type="submit" className="boton boton--primario" id="boton-enviar">
-            <Send className="icono" strokeWidth={1.75} aria-hidden="true" />
-            Enviar solicitud
+            {enviando ? (
+              <>
+                <LoaderCircle className="icono icono--girando" strokeWidth={1.75} aria-hidden="true" />
+                Enviando...
+              </>
+            ) : (
+              <>
+                <Send className="icono" strokeWidth={1.75} aria-hidden="true" />
+                Enviar solicitud
+              </>
+            )}
           </button>
           <button type="button" className="boton boton--secundario" onClick={limpiar} id="boton-limpiar">
             <Eraser className="icono" strokeWidth={1.75} aria-hidden="true" />
