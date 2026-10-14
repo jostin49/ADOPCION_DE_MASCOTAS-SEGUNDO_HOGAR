@@ -1,0 +1,128 @@
+/* =====================================================================
+   base.css — Reset minimo, tipografia y estilos de elementos HTML
+   ===================================================================== */
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+fieldset {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+/* ===== Documento ===== */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-base);
+  font-weight: var(--peso-normal);
+  line-height: var(--interlineado-texto);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  overflow-x: hidden;
+}
+
+/* ===== Títulos ===== */
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  line-height: var(--interlineado-titulo);
+  color: var(--color-primario);
+}
+
+h1 {
+  font-size: var(--texto-2xl);
+  font-weight: var(--peso-negrita);
+}
+
+h2 {
+  font-size: var(--texto-xl);
+  font-weight: var(--peso-semibold);
+}
+
+h3 {
+  font-size: var(--texto-md);
+  font-weight: var(--peso-semibold);
+}
+
+/* ===== Enlaces ===== */
+a {
+  color: var(--color-primario);
+  text-underline-offset: 0.2em;
+  transition: color var(--transicion-rapida);
+}
+
+a:hover {
+  color: var(--color-primario-hover);
+}
+
+/* ===== Formularios ===== */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* ===== Foco visible ===== */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--sombra-foco);
+}
+
+/* ===== Utilidades de accesibilidad ===== */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

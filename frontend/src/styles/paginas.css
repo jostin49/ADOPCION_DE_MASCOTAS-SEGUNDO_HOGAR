@@ -1,0 +1,155 @@
+/* =====================================================================
+   paginas.css — Ajustes especificos de cada pagina
+   ===================================================================== */
+
+/* ===== Encabezado común de página ===== */
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-sm);
+  margin-bottom: var(--espacio-xl);
+}
+
+.encabezado__texto {
+  max-width: var(--ancho-lectura);
+  color: var(--color-texto-suave);
+}
+
+/* ===== Inicio ===== */
+.inicio__presentacion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-xl);
+  padding-bottom: var(--espacio-2xl);
+  border-bottom: var(--borde-estandar);
+}
+
+.inicio__contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-lg);
+  min-width: 0;
+}
+
+.inicio__titulo {
+  max-width: 20ch;
+}
+
+.inicio__descripcion {
+  max-width: var(--ancho-lectura);
+  font-size: var(--texto-md);
+  color: var(--color-texto-suave);
+}
+
+.inicio__imagen-envoltura {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.inicio__imagen {
+  width: 100%;
+  max-width: 32rem;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.inicio__pasos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-lg);
+  padding-top: var(--espacio-2xl);
+}
+
+.paso {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+  height: 100%;
+}
+
+.paso__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.paso__numero {
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xl);
+  font-weight: var(--peso-negrita);
+  color: var(--color-acento);
+}
+
+.paso__texto {
+  color: var(--color-texto-suave);
+}
+
+/* ===== Registro ===== */
+.registro {
+  max-width: var(--ancho-formulario);
+  margin-inline: auto;
+}
+
+.registro__mensaje {
+  margin-bottom: var(--espacio-lg);
+}
+
+/* ===== Lista ===== */
+.lista__encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-md);
+  margin-bottom: var(--espacio-xl);
+}
+
+.lista__resumen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-xs);
+}
+
+.lista__contador {
+  color: var(--color-texto-suave);
+}
+
+.lista__item {
+  min-width: 0;
+}
+
+/* ===== No encontrada ===== */
+.no-encontrada {
+  max-width: var(--ancho-formulario);
+  margin-inline: auto;
+}
+
+.no-encontrada .circulo-icono {
+  color: var(--color-error);
+}
+
+/* ===== Tablet (desde 640 px) ===== */
+@media (min-width: 40rem) {
+  .inicio__presentacion {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-2xl);
+  }
+
+  .inicio__contenido {
+    flex: 1.1;
+  }
+
+  .inicio__imagen-envoltura {
+    flex: 0.9;
+    justify-content: flex-end;
+  }
+
+  .lista__encabezado {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
